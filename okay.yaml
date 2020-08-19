@@ -40,7 +40,7 @@ spec:
       targetPort: 5678
   selector:
     app: okay
-    
+
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -54,7 +54,7 @@ spec:
   tls:
     - hosts:
         - "okay.colecarter.dev"
-      secretName: tls-okaydotcolecarterdotdev
+      secretName: tls-okay-colecarter-dev
   rules:
     - host: okay.colecarter.dev
       http:
