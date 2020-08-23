@@ -1,10 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: okay
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -62,3 +56,36 @@ spec:
           - backend:
               serviceName: okay
               servicePort: 80
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: okay
+  namespace: argocd
+spec:
+  description: Health check used for testing different Kubernetes configurations (ingress, tls, deployment, etc.)
+  sourceRepos:
+    - https://github.com/colecrtr/okay
+  destinations:
+    - namespace: okay
+      server: https://kubernetes.default.svc
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: okay
+  namespace: argocd
+spec:
+  project: okay
+  source:
+    repoURL: https://github.com/colecrtr/okay
+    targetRevision: master
+    path: .
+  destination:
+    namespace: okay
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
