@@ -70,6 +70,8 @@ spec:
   destinations:
     - namespace: okay
       server: https://kubernetes.default.svc
+    - namespace: argocd
+      server: https://kubernetes.default.svc
 
 ---
 apiVersion: argoproj.io/v1alpha1
