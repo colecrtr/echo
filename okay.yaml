@@ -70,7 +70,9 @@ metadata:
   name: okay
   namespace: argocd
 spec:
-  description: Health check used for testing different Kubernetes configurations (ingress, tls, deployment, etc.)
+  description: >-
+    Health check used for testing different Kubernetes configurations (ingress, tls, deployment,
+    etc.)
   sourceRepos:
     - https://github.com/colecrtr/okay
   destinations:
