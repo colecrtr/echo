@@ -78,6 +78,9 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: argocd
       server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
 
 ---
 apiVersion: argoproj.io/v1alpha1
